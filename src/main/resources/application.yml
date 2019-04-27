@@ -1,0 +1,14 @@
+server:
+  port: 8080
+# ˝æ›ø‚≈‰÷√
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.8.159.51:3306/qianfeng?serverTimezone=UTC&characterEncoding=UTF8
+    username: han
+    password: 111111
+    type: com.alibaba.druid.pool.DruidDataSource
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+
