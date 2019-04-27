@@ -27,7 +27,7 @@ public class UserController {
         if (i != 0){
             return JsonBean.setOK("注册成功！",null);
         }else {
-            return JsonBean.setERROR("注册失败！",null);
+            return JsonBean.setERROR("注册失败！可能是用户名存在",null);
         }
 
     }

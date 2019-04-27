@@ -28,8 +28,14 @@ public class UserServiceImpl implements UserService{
     @Override
     public int insertSelective(User user) {
 
-        int i = userDao.insertSelective(user);
-        return i;
+        User user1 = userDao.selectByPhone(user.getPhone());
+
+        if (user1 == null){
+            return userDao.insertSelective(user);
+        }else {
+            return 0;
+        }
+
     }
 
 }

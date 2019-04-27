@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.dao.Userdao">
+  <resultMap id="BaseResultMap" type="com.qianfeng.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="marriage" jdbcType="VARCHAR" property="marriage" />
+    <result column="workplace" jdbcType="VARCHAR" property="workplace" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="high" jdbcType="INTEGER" property="high" />
+    <result column="weigh" jdbcType="INTEGER" property="weigh" />
+    <result column="income" jdbcType="INTEGER" property="income" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="idcard" jdbcType="VARCHAR" property="idcard" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="room" jdbcType="VARCHAR" property="room" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, age, phone, marriage, workplace, position, high, weigh, income, flag, idcard, 
+    email, sex, nation, education, room, hobby, password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianfeng.entity.User">
+    insert into user (id, name, age, 
+      phone, marriage, workplace, 
+      position, high, weigh, 
+      income, flag, idcard, 
+      email, sex, nation, 
+      education, room, hobby, 
+      password)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+      #{phone,jdbcType=VARCHAR}, #{marriage,jdbcType=VARCHAR}, #{workplace,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{high,jdbcType=INTEGER}, #{weigh,jdbcType=INTEGER}, 
+      #{income,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, #{idcard,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{room,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianfeng.entity.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="marriage != null">
+        marriage,
+      </if>
+      <if test="workplace != null">
+        workplace,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="high != null">
+        high,
+      </if>
+      <if test="weigh != null">
+        weigh,
+      </if>
+      <if test="income != null">
+        income,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="idcard != null">
+        idcard,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="room != null">
+        room,
+      </if>
+      <if test="hobby != null">
+        hobby,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="marriage != null">
+        #{marriage,jdbcType=VARCHAR},
+      </if>
+      <if test="workplace != null">
+        #{workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="high != null">
+        #{high,jdbcType=INTEGER},
+      </if>
+      <if test="weigh != null">
+        #{weigh,jdbcType=INTEGER},
+      </if>
+      <if test="income != null">
+        #{income,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="room != null">
+        #{room,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null">
+        #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianfeng.entity.User">
+    update user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="marriage != null">
+        marriage = #{marriage,jdbcType=VARCHAR},
+      </if>
+      <if test="workplace != null">
+        workplace = #{workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="high != null">
+        high = #{high,jdbcType=INTEGER},
+      </if>
+      <if test="weigh != null">
+        weigh = #{weigh,jdbcType=INTEGER},
+      </if>
+      <if test="income != null">
+        income = #{income,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="idcard != null">
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="room != null">
+        room = #{room,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null">
+        hobby = #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianfeng.entity.User">
+    update user
+    set name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      marriage = #{marriage,jdbcType=VARCHAR},
+      workplace = #{workplace,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      high = #{high,jdbcType=INTEGER},
+      weigh = #{weigh,jdbcType=INTEGER},
+      income = #{income,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      room = #{room,jdbcType=VARCHAR},
+      hobby = #{hobby,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+
+
+
+
+</mapper>
