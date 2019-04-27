@@ -3,7 +3,6 @@ package com.qianfeng.dao;
 import com.qianfeng.entity.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 /**
  * Created by Administrator on 2019/4/27.
@@ -22,6 +21,4 @@ public interface Userdao {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
-    @Select("select * from user where phone = #{phone}")
-    public User selectByPhone(String phone);
 }
