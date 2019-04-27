@@ -2,7 +2,17 @@ package com.qianfeng.dao;
 
 import com.qianfeng.entity.User;
 
+
 import org.apache.ibatis.annotations.*;
+
+import java.util.List;
+
+
+
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -20,7 +30,6 @@ public interface Userdao {
     public List<User> findPosition();
     @Select("select * from user where position = #{position}")
     public List<User> findByPosition(@Param("position") String position);
-
 
     int deleteByPrimaryKey(Integer id);
 

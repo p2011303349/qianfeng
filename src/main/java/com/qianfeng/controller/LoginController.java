@@ -35,20 +35,16 @@ public class LoginController {
 
     @GetMapping("randomCode.do")
     public JsonBean randomCode(String phone){
-
-
         if(phone != null){
             return JsonBean.setOK("发送验证码", UserServiceImpl.randomCode());
         }else {
             return JsonBean.setERROR("发送验证码",null);
         }
-
     }
 
     @GetMapping("login1.do")
     public JsonBean login1(String phone){
         User user = userService.login1(phone);
-
         if(user != null){
             return JsonBean.setOK("登录",null);
         }else {

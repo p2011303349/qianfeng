@@ -12,15 +12,11 @@ public interface UserService {
 
     public User login(String phone, String password);
 
-
     public User login1(String phone);
 
     public List<User> findPosition();
 
-
     public List<User> findByPosition(String position);
-
-
 
     public int insertSelective(User user);
 

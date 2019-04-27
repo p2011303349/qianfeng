@@ -47,14 +47,14 @@ public class UserController {
         }else {
             return JsonBean.setERROR("注册失败！",null);
         }
-
-
     }
+
 
     @GetMapping("editInfo.do")
     public JsonBean editInfo(User user) {
         userService.editInfo(user);
         return JsonBean.setOK("编辑", null);
     }
+
 
 }

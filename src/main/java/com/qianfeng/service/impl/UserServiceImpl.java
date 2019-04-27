@@ -34,7 +34,6 @@ public class UserServiceImpl implements UserService{
         if(user == null){
             throw new RuntimeException("用户名错误");
         }
-
         return user;
     }
 
@@ -61,8 +60,14 @@ public class UserServiceImpl implements UserService{
     @Override
     public int insertSelective(User user) {
 
-        int i = userDao.insertSelective(user);
-        return i;
+        User user1 = userDao.selectUserByPhone(user.getPhone());
+
+        if (user1 == null){
+            return userDao.insertSelective(user);
+        }else {
+            throw new RuntimeException("用户名已存在");
+        }
+
     }
 
     @Override
