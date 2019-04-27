@@ -2,13 +2,9 @@ package com.qianfeng.dao;
 
 import com.qianfeng.entity.User;
 
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
 
 
 /**
@@ -37,5 +33,6 @@ public interface Userdao {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
-
+    @Update("update user set name = #{name},age = #{age} ,idcard = #{idcard},email = #{email} where id = #{id}")
+    public void editInfo(User user);
 }

@@ -14,14 +14,14 @@ public class JsonBean {
 
     public static JsonBean setOK(String m,Object data){
         JsonBean r=new JsonBean();
-        r.setCode(10000);
+        r.setCode(1);
         r.setData(data);
         r.setMsg(m);
         return r;
     }
     public static JsonBean setERROR(String m,Object data){
         JsonBean r=new JsonBean();
-        r.setCode(10010);
+        r.setCode(0);
         r.setData(data);
         r.setMsg(m);
         return r;

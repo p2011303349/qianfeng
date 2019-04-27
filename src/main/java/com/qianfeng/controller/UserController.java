@@ -51,4 +51,10 @@ public class UserController {
 
     }
 
+    @GetMapping("editInfo.do")
+    public JsonBean editInfo(User user) {
+        userService.editInfo(user);
+        return JsonBean.setOK("编辑", null);
+    }
+
 }

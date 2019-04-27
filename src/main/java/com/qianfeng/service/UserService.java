@@ -25,5 +25,5 @@ public interface UserService {
     public int insertSelective(User user);
 
 
-
+    public void editInfo(User user);
 }
