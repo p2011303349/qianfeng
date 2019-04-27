@@ -16,14 +16,14 @@ public class JsonBean {
         JsonBean r=new JsonBean();
         r.setCode(10000);
         r.setData(data);
-        r.setMsg(m+"成功");
+        r.setMsg(m);
         return r;
     }
     public static JsonBean setERROR(String m,Object data){
         JsonBean r=new JsonBean();
         r.setCode(10010);
         r.setData(data);
-        r.setMsg(m+"失败");
+        r.setMsg(m);
         return r;
     }
 

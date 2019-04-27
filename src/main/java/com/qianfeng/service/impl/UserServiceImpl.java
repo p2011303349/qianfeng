@@ -50,9 +50,19 @@ public class UserServiceImpl implements UserService{
         return list;
     }
 
+
+
     public static int randomCode(){
 
         return (int)(Math.random()*8999)+1000;
+    }
+
+
+    @Override
+    public int insertSelective(User user) {
+
+        int i = userDao.insertSelective(user);
+        return i;
     }
 
 

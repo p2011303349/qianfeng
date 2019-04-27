@@ -10,5 +10,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+mybatis:
+  mapper-locations: classpath*:com/qianfeng/mapping/*.xml
 
 
