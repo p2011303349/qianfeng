@@ -24,4 +24,12 @@ public class UserServiceImpl implements UserService{
     public User findByUsername(String phone) {
         return null;
     }
+
+    @Override
+    public int insertSelective(User user) {
+
+        int i = userDao.insertSelective(user);
+        return i;
+    }
+
 }

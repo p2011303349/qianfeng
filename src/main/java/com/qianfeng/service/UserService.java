@@ -11,4 +11,8 @@ public interface UserService {
     public JsonBean login(String phone, String password);
 
     public User findByUsername(String phone);
+
+    public int insertSelective(User user);
+
+
 }

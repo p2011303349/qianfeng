@@ -19,15 +19,4 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     @Autowired
     private UserService userService;
-
-    @GetMapping("studentlate/queryall.do")
-    public JsonBean login(String phone, String password, HttpServletRequest request, HttpServletResponse response, HttpSession session){
-        return userService.login(phone,password);
-        User user = userService.findByUsername(phone);
-        session.setAttribute("user",user);
-    }
-
-
-
-
 }
