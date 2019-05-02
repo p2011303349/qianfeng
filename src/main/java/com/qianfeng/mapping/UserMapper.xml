@@ -255,8 +255,36 @@
       password = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="editInfo" parameterType="com.qianfeng.entity.User">
+    update user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
 
+      <if test="idcard != null">
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
 
+    </set>
+    where phone = #{phone}
+
+  </update>
+  <select id="findAction" parameterType="string" resultType="com.qianfeng.entity.Action">
+    SELECT a.* FROM
+    action a
+    inner JOIN user_action ua
+    on a.id = ua.aid
+    INNER JOIN user u
+    on ua.uid = u.id
+    where u.phone = #{phone}
+  </select>
 
 
 

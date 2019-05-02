@@ -1,7 +1,9 @@
 package com.qianfeng.service;
 
+import com.qianfeng.entity.Action;
 import com.qianfeng.entity.User;
 import com.qianfeng.vo.JsonBean;
+import com.qianfeng.vo.VUser;
 
 import java.util.List;
 
@@ -22,4 +24,12 @@ public interface UserService {
 
 
     public void editInfo(User user);
+
+    public void findPassword(String phone, String password);
+
+    public void changePassword(String phone, String newpassword);
+
+    public List<VUser> focusPerson(String phone);
+
+    public List<Action> findAction(String phone);
 }

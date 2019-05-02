@@ -1,8 +1,10 @@
 package com.qianfeng.dao;
 
+import com.qianfeng.entity.Action;
 import com.qianfeng.entity.User;
 
 
+import com.qianfeng.vo.VUser;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -42,6 +44,20 @@ public interface Userdao {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
-    @Update("update user set name = #{name},age = #{age} ,idcard = #{idcard},email = #{email} where id = #{id}")
+    /*@Update("update user set name = #{name},age = #{age} ,idcard = #{idcard},email = #{email} where id = #{id}")*/
     public void editInfo(User user);
+    @Select("select password from user where phone = #{phone}")
+    public String  findPassword(String  phone);
+    @Update("update user set password = #{newpassword} where phone = #{phone}")
+    public void changePassword(@Param("phone") String phone, @Param("newpassword") String newpassword);
+    @Select("SELECT u.name,d.dname,d.ddesc,d.dtime,ud.flag FROM \n" +
+            "user u\n" +
+            "INNER JOIN user_dynamic ud\n" +
+            "on u.id = ud.uid\n" +
+            "INNER JOIN dynamic d\n" +
+            "on ud.uid = d.uid\n" +
+            "WHERE u.phone = phone")
+    public List<VUser> focusPerson(String phone);
+
+    public List<Action> findAction(@Param("phone")String phone);
 }

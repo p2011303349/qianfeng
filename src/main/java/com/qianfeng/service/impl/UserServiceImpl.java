@@ -1,9 +1,11 @@
 package com.qianfeng.service.impl;
 
 import com.qianfeng.dao.Userdao;
+import com.qianfeng.entity.Action;
 import com.qianfeng.entity.User;
 import com.qianfeng.service.UserService;
 import com.qianfeng.vo.JsonBean;
+import com.qianfeng.vo.VUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,6 +75,32 @@ public class UserServiceImpl implements UserService{
     @Override
     public void editInfo(User user) {
         userDao.editInfo(user);
+    }
+
+    @Override
+    public void findPassword(String phone, String password) {
+        if(!userDao.findPassword(phone).equals(password)){
+
+            throw new RuntimeException("原密码不对");
+        }
+
+
+    }
+
+    @Override
+    public void changePassword(String phone, String newpassword) {
+        userDao.changePassword(phone,newpassword);
+    }
+
+    @Override
+    public List<VUser> focusPerson(String phone) {
+
+        return userDao.focusPerson(phone);
+    }
+
+    @Override
+    public List<Action> findAction(String phone) {
+        return userDao.findAction(phone);
     }
 
 

@@ -1,8 +1,10 @@
 package com.qianfeng.controller;
 
+import com.qianfeng.entity.Action;
 import com.qianfeng.entity.User;
 import com.qianfeng.service.UserService;
 import com.qianfeng.vo.JsonBean;
+import com.qianfeng.vo.VUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,13 +29,13 @@ public class UserController {
     @GetMapping("findPosition.do")
     public JsonBean UserPosition(){
         List<User> list = userService.findPosition();
-        return JsonBean.setOK("查找",list);
+        return JsonBean.setOK("查找成功",list);
     }
 
     @GetMapping("findByPosition.do")
     public JsonBean findByPosition(String position) {
         List<User> list = userService.findByPosition(position);
-        return JsonBean.setOK("查找", list);
+        return JsonBean.setOK("查找成功", list);
     }
 
     @GetMapping("user/register.do")
@@ -53,7 +55,31 @@ public class UserController {
     @GetMapping("editInfo.do")
     public JsonBean editInfo(User user) {
         userService.editInfo(user);
-        return JsonBean.setOK("编辑", null);
+        return JsonBean.setOK("编辑成功", null);
+    }
+
+    @GetMapping("changePassword.do")
+    public JsonBean changePassword(String phone,String password,String newpassword) {
+        userService.findPassword(phone,password);
+
+        userService.changePassword(phone,newpassword);
+        return JsonBean.setOK("编辑成功", null);
+    }
+
+    @GetMapping("focusPerson.do")
+    public JsonBean focusPerson(String phone) {
+        List<VUser> list = userService.focusPerson(phone);
+
+
+        return JsonBean.setOK("查找成功", list);
+    }
+
+    @GetMapping("action.do")
+    public JsonBean findAction(String phone) {
+        List<Action> list = userService.findAction(phone);
+
+
+        return JsonBean.setOK("查找成功", list);
     }
 
 
