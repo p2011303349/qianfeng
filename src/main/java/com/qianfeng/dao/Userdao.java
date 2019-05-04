@@ -1,6 +1,8 @@
 package com.qianfeng.dao;
 
 import com.qianfeng.entity.Action;
+import com.qianfeng.entity.Comments;
+import com.qianfeng.entity.Dynamic;
 import com.qianfeng.entity.User;
 
 
@@ -16,6 +18,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import javax.servlet.Registration;
 import java.util.List;
 
 
@@ -53,11 +56,23 @@ public interface Userdao {
     @Select("SELECT u.name,d.dname,d.ddesc,d.dtime,ud.flag FROM \n" +
             "user u\n" +
             "INNER JOIN user_dynamic ud\n" +
-            "on u.id = ud.uid\n" +
+            "on u.phone = ud.lphone\n" +
             "INNER JOIN dynamic d\n" +
-            "on ud.uid = d.uid\n" +
-            "WHERE u.phone = phone")
+            "on ud.uphone = d.uphone\n" +
+            "WHERE u.phone = phone and ud.flag = 1")
     public List<VUser> focusPerson(String phone);
 
-    public List<Action> findAction(@Param("phone")String phone);
+    public List<Action> findAction1(@Param("phone")String phone);
+
+    public List<Action> findAction2(@Param("phone")String phone);
+
+    public void addDynamic(Dynamic dy);
+    @Select("select * from dynamic ")
+    public List<Dynamic> dynamicList();
+
+    public void focus(String phone);
+
+    public void keepOut(String phone);
+    @Insert("insert into comments (did,comments,ctime) values (#{did},#{comments},#{ctime})")
+    public void addComments(Comments c);
 }

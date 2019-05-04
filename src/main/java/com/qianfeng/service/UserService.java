@@ -1,6 +1,8 @@
 package com.qianfeng.service;
 
 import com.qianfeng.entity.Action;
+import com.qianfeng.entity.Comments;
+import com.qianfeng.entity.Dynamic;
 import com.qianfeng.entity.User;
 import com.qianfeng.vo.JsonBean;
 import com.qianfeng.vo.VUser;
@@ -31,5 +33,16 @@ public interface UserService {
 
     public List<VUser> focusPerson(String phone);
 
-    public List<Action> findAction(String phone);
+    public List<Action> findAction1(String phone);
+    public List<Action> findAction2(String phone);
+
+    public void addDynamic(Dynamic dy);
+
+    public List<Dynamic> dynamicList();
+
+    public void focus(String phone);
+
+    public void keepOut(String phone);
+
+    public void addComments(Comments c);
 }

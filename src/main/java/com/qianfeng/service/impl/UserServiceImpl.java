@@ -2,6 +2,8 @@ package com.qianfeng.service.impl;
 
 import com.qianfeng.dao.Userdao;
 import com.qianfeng.entity.Action;
+import com.qianfeng.entity.Comments;
+import com.qianfeng.entity.Dynamic;
 import com.qianfeng.entity.User;
 import com.qianfeng.service.UserService;
 import com.qianfeng.vo.JsonBean;
@@ -99,8 +101,38 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<Action> findAction(String phone) {
-        return userDao.findAction(phone);
+    public List<Action> findAction1(String phone) {
+        return userDao.findAction1(phone);
+    }
+
+    @Override
+    public List<Action> findAction2(String phone) {
+        return userDao.findAction2(phone);
+    }
+
+    @Override
+    public void addDynamic(Dynamic dy) {
+        userDao.addDynamic(dy);
+    }
+
+    @Override
+    public List<Dynamic> dynamicList() {
+        return userDao.dynamicList();
+    }
+
+    @Override
+    public void focus(String phone) {
+        userDao.focus(phone);
+    }
+
+    @Override
+    public void keepOut(String phone) {
+        userDao.keepOut(phone);
+    }
+
+    @Override
+    public void addComments(Comments c) {
+        userDao.addComments(c);
     }
 
 

@@ -276,16 +276,45 @@
     where phone = #{phone}
 
   </update>
-  <select id="findAction" parameterType="string" resultType="com.qianfeng.entity.Action">
+  <select id="findAction1" parameterType="string" resultType="com.qianfeng.entity.Action">
     SELECT a.* FROM
     action a
     inner JOIN user_action ua
     on a.id = ua.aid
     INNER JOIN user u
     on ua.uid = u.id
-    where u.phone = #{phone}
+    where u.phone = #{phone} and a.flag = 1;
   </select>
 
+  <select id="findAction2" parameterType="string" resultType="com.qianfeng.entity.Action">
+    SELECT a.* FROM
+    action a
+    inner JOIN user_action ua
+    on a.id = ua.aid
+    INNER JOIN user u
+    on ua.uid = u.id
+    where u.phone = #{phone} and a.flag = 0;
+  </select>
+  <insert id="addDynamic" parameterType="com.qianfeng.entity.Dynamic">
+    insert into dynamic (uphone,photo,ddesc)
+    values (#{uphone}, #{photo},#{ddesc})
+  </insert>
+
+  <update id="focus" parameterType="string">
+    update user_dynamic
+    set  flag = 1
+
+    where uphone = #{phone}
+
+  </update>
+
+  <update id="keepOut" parameterType="string">
+    update user_dynamic
+    set  flag = 2
+
+    where uphone = #{phone}
+
+  </update>
 
 
 
