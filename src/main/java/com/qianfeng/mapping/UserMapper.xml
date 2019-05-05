@@ -21,10 +21,11 @@
     <result column="room" jdbcType="VARCHAR" property="room" />
     <result column="hobby" jdbcType="VARCHAR" property="hobby" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
   </resultMap>
   <sql id="Base_Column_List">
     id, name, age, phone, marriage, workplace, position, high, weigh, income, flag, idcard, 
-    email, sex, nation, education, room, hobby, password
+    email, sex, nation, education, room, hobby, password,img
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -112,6 +113,9 @@
       <if test="password != null">
         password,
       </if>
+      <if test="img != null">
+        img,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -170,6 +174,9 @@
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -256,7 +263,100 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <update id="updateUser" parameterType="com.qianfeng.entity.User">
+    update user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="marriage != null">
+        marriage = #{marriage,jdbcType=VARCHAR},
+      </if>
+      <if test="workplace != null">
+        workplace = #{workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="high != null">
+        high = #{high,jdbcType=INTEGER},
+      </if>
+      <if test="weigh != null">
+        weigh = #{weigh,jdbcType=INTEGER},
+      </if>
+      <if test="income != null">
+        income = #{income,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="idcard != null">
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="room != null">
+        room = #{room,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null">
+        hobby = #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+<select id="findCondition" parameterType="com.qianfeng.entity.User" resultType="com.qianfeng.entity.User">
+  select *  from user
+  <where>
+    <if test="age != null">
+     and age = #{age,jdbcType=INTEGER}
+    </if>
+    <if test="marriage != null">
+      and marriage = #{marriage,jdbcType=VARCHAR}
+    </if>
+    <if test="position != null">
+      and  position = #{position,jdbcType=VARCHAR}
+    </if>
+    <if test="high != null">
+      and  high = #{high,jdbcType=INTEGER}
+    </if>
 
+    <if test="income != null">
+      and  income = #{income,jdbcType=INTEGER}
+    </if>
+    <if test="flag != null">
+      and flag = #{flag,jdbcType=INTEGER}
+    </if>
+
+    <if test="sex != null">
+      and sex = #{sex,jdbcType=VARCHAR}
+    </if>
+    <if test="nation != null">
+      and  nation = #{nation,jdbcType=VARCHAR}
+    </if>
+  </where>
+</select>
 
 
 

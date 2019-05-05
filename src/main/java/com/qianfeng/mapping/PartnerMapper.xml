@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.dao.PartnerMapper">
+  <resultMap id="BaseResultMap" type="com.qianfeng.entity.Partner">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="ages" jdbcType="INTEGER" property="ages" />
+    <result column="highs" jdbcType="INTEGER" property="highs" />
+    <result column="marriages" jdbcType="INTEGER" property="marriages" />
+    <result column="incomes" jdbcType="VARCHAR" property="incomes" />
+    <result column="educations" jdbcType="VARCHAR" property="educations" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="character" jdbcType="VARCHAR" property="character" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, ages, highs, marriages, incomes, educations, address, character
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from partner
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from partner
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianfeng.entity.Partner">
+    insert into partner (id, pid, ages, 
+      highs, marriages, incomes, 
+      educations, address, character
+      )
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{ages,jdbcType=INTEGER}, 
+      #{highs,jdbcType=INTEGER}, #{marriages,jdbcType=INTEGER}, #{incomes,jdbcType=VARCHAR}, 
+      #{educations,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{character,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianfeng.entity.Partner">
+    insert into partner
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="ages != null">
+        ages,
+      </if>
+      <if test="highs != null">
+        highs,
+      </if>
+      <if test="marriages != null">
+        marriages,
+      </if>
+      <if test="incomes != null">
+        incomes,
+      </if>
+      <if test="educations != null">
+        educations,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="character != null">
+        character,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="ages != null">
+        #{ages,jdbcType=INTEGER},
+      </if>
+      <if test="highs != null">
+        #{highs,jdbcType=INTEGER},
+      </if>
+      <if test="marriages != null">
+        #{marriages,jdbcType=INTEGER},
+      </if>
+      <if test="incomes != null">
+        #{incomes,jdbcType=VARCHAR},
+      </if>
+      <if test="educations != null">
+        #{educations,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="character != null">
+        #{character,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianfeng.entity.Partner">
+    update partner
+    <set>
+      <if test="ages != null">
+        ages = #{ages,jdbcType=INTEGER},
+      </if>
+      <if test="highs != null">
+        highs = #{highs,jdbcType=INTEGER},
+      </if>
+      <if test="marriages != null">
+        marriages = #{marriages,jdbcType=INTEGER},
+      </if>
+      <if test="incomes != null">
+        incomes = #{incomes,jdbcType=VARCHAR},
+      </if>
+      <if test="educations != null">
+        educations = #{educations,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="character != null">
+        character = #{character,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianfeng.entity.Partner">
+    update partner
+    set pid = #{pid,jdbcType=INTEGER},
+      ages = #{ages,jdbcType=INTEGER},
+      highs = #{highs,jdbcType=INTEGER},
+      marriages = #{marriages,jdbcType=INTEGER},
+      incomes = #{incomes,jdbcType=VARCHAR},
+      educations = #{educations,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      character = #{character,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="findByPid" parameterType="int" resultType="com.qianfeng.entity.Partner">
+    select * from partner where pid = #{pid}
+  </select>
+
+
+
+</mapper>

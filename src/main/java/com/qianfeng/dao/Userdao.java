@@ -34,4 +34,10 @@ public interface Userdao {
 
     int updateByPrimaryKey(User record);
 
+    public void updateUser(User user);
+
+   public List<User> findCondition(User user);
+
+
+
 }
