@@ -7,6 +7,7 @@ import com.qianfeng.entity.Dynamic;
 import com.qianfeng.entity.User;
 import com.qianfeng.service.UserService;
 import com.qianfeng.vo.JsonBean;
+import com.qianfeng.vo.VDynamic;
 import com.qianfeng.vo.VUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -116,7 +117,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<Dynamic> dynamicList() {
+    public List<VDynamic> dynamicList() {
         return userDao.dynamicList();
     }
 

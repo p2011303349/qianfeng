@@ -6,6 +6,7 @@ import com.qianfeng.entity.Dynamic;
 import com.qianfeng.entity.User;
 
 
+import com.qianfeng.vo.VDynamic;
 import com.qianfeng.vo.VUser;
 import org.apache.ibatis.annotations.*;
 
@@ -67,8 +68,11 @@ public interface Userdao {
     public List<Action> findAction2(@Param("phone")String phone);
 
     public void addDynamic(Dynamic dy);
-    @Select("select * from dynamic ")
-    public List<Dynamic> dynamicList();
+    @Select("select d.id,d.dname,u.img,d.dtime,d.ddesc,d.flag,d.photo from dynamic d\n" +
+            "\t\tinner JOIN user u\n" +
+            "\t\ton d.uphone = u.phone\n" +
+            "\t\twhere d.flag != 2")
+    public List<VDynamic> dynamicList();
 
     public void focus(String phone);
 

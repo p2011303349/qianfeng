@@ -5,6 +5,7 @@ import com.qianfeng.entity.Comments;
 import com.qianfeng.entity.Dynamic;
 import com.qianfeng.entity.User;
 import com.qianfeng.vo.JsonBean;
+import com.qianfeng.vo.VDynamic;
 import com.qianfeng.vo.VUser;
 
 import java.util.List;
@@ -38,7 +39,7 @@ public interface UserService {
 
     public void addDynamic(Dynamic dy);
 
-    public List<Dynamic> dynamicList();
+    public List<VDynamic> dynamicList();
 
     public void focus(String phone);
 

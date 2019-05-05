@@ -11,7 +11,7 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
 mybatis:
-  mapper-locations: classpath*:com/qianfeng/mapping/*.xml
+    mapper-locations: classpath*:com/qianfeng/mapping/*.xml
 
 
 
