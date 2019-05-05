@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.dao.BaoMingMapper">
+  <resultMap id="BaseResultMap" type="com.qianfeng.entity.BaoMing">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="marriages" jdbcType="VARCHAR" property="marriages" />
+    <result column="workplace" jdbcType="VARCHAR" property="workplace" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="heigs" jdbcType="INTEGER" property="heigs" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
+    <result column="income" jdbcType="VARCHAR" property="income" />
+    <result column="aid" jdbcType="INTEGER" property="aid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, sex, age, phone, marriages, workplace, position, heigs, weight, income, 
+    aid
+  </sql>
+  <select id="selectByaid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from baoming
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from baoming
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianfeng.entity.BaoMing">
+    insert into baoming (id, name, sex, 
+      age, phone, marriages, 
+      workplace, position, heigs, 
+      weight, income, aid
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{age,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{marriages,jdbcType=VARCHAR}, 
+      #{workplace,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{heigs,jdbcType=INTEGER}, 
+      #{weight,jdbcType=INTEGER}, #{income,jdbcType=VARCHAR}, #{aid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianfeng.entity.BaoMing">
+    insert into baoming
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="marriages != null">
+        marriages,
+      </if>
+      <if test="workplace != null">
+        workplace,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="heigs != null">
+        heigs,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="income != null">
+        income,
+      </if>
+      <if test="aid != null">
+        aid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="marriages != null">
+        #{marriages,jdbcType=VARCHAR},
+      </if>
+      <if test="workplace != null">
+        #{workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="heigs != null">
+        #{heigs,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="income != null">
+        #{income,jdbcType=VARCHAR},
+      </if>
+      <if test="aid != null">
+        #{aid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianfeng.entity.BaoMing">
+    update baoming
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="marriages != null">
+        marriages = #{marriages,jdbcType=VARCHAR},
+      </if>
+      <if test="workplace != null">
+        workplace = #{workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="heigs != null">
+        heigs = #{heigs,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="income != null">
+        income = #{income,jdbcType=VARCHAR},
+      </if>
+      <if test="aid != null">
+        aid = #{aid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianfeng.entity.BaoMing">
+    update baoming
+    set name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      marriages = #{marriages,jdbcType=VARCHAR},
+      workplace = #{workplace,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      heigs = #{heigs,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      income = #{income,jdbcType=VARCHAR},
+      aid = #{aid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

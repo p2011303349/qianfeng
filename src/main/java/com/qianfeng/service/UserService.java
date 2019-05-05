@@ -25,6 +25,9 @@ public interface UserService {
 
     public int insertSelective(User user);
 
+    public void updateUser(User user);
+
+    public List<User> findCondition(User user);
 
     public void editInfo(User user);
 

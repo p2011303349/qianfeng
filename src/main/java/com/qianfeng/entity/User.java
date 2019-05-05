@@ -28,7 +28,6 @@ public class User {
     private String room;
     private String hobby;
     private String password;
-
-
+    private String img;
 
 }

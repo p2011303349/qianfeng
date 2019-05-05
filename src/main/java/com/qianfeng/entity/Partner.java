@@ -11,7 +11,7 @@ import lombok.ToString;
 public class Partner {
     private Integer id;
     private Integer pid;
-    private Integer age;
+    private Integer ages;
     private Integer highs;
     private Integer marriages;
     private String incomes;
