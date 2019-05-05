@@ -70,16 +70,5 @@ public class UserServiceImpl implements UserService{
 
     }
 
-    @Override
-    public void updateUser(User user) {
-        userDao.updateUser(user);
-    }
-
-    @Override
-    public List<User> findCondition(User user) {
-        return userDao.findCondition(user);
-
-    }
-
 
 }
